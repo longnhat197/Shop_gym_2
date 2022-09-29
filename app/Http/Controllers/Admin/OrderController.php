@@ -64,9 +64,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($order_id)
     {
-        //
+        $order = $this->orderService->find($order_id);
+        return view('admin.order.edit', compact('order'));
     }
 
     /**
@@ -76,9 +77,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $order_id)
     {
-        //
+        $status = $request->get('status');
+        $this->orderService->update(['status'=>$status], $order_id);
+
+        return redirect('admin/order');
     }
 
     /**
