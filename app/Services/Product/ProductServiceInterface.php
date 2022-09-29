@@ -12,4 +12,5 @@ interface ProductServiceInterface extends ServiceInterface
     public function getProductsByCategory($categoryName, $request);
     public function getPriceMax();
     public function getPriceMin();
+
 }

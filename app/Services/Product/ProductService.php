@@ -55,4 +55,6 @@ class ProductService extends BaseService implements ProductServiceInterface
     public function getPriceMin(){
         return $this->repository->getPriceMin();
     }
+
+
 }

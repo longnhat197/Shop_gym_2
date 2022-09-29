@@ -107,6 +107,11 @@
                 {{ request('size') == 'xs' ? 'checked':'' }}>
                 <label for="xs-size" class="{{ request('size') == 'xs' ? 'active' : '' }}">xs</label>
             </div>
+            <div class="sc-item">
+                <input type="radio" id="xl-size" name="size" value="xl" onchange="this.form.submit();"
+                {{ request('size') == 'xl' ? 'checked':'' }}>
+                <label for="xl-size" class="{{ request('size') == 'xl' ? 'active' : '' }}">xl</label>
+            </div>
         </div>
     </div>
     <div class="filter-widget">

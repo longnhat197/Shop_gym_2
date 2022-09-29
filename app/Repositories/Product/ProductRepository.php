@@ -140,4 +140,5 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
         return $products;
     }
+
 }

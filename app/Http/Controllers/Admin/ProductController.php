@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\Product\ProductServiceInterface;
 use App\Services\ProductCategory\ProductCategoryServiceInterface;
 use App\Services\Brand\BrandServiceInterface;
+use App\Models\ProductImage;
 
 class ProductController extends Controller
 {
@@ -77,7 +78,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->productService->find($id);
+        $brands = $this->brandService->all();
+        $productCategories = $this->productCategoryService->all();
+        return view('admin.product.edit', compact('product','brands', 'productCategories'));
     }
 
     /**
@@ -89,7 +93,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $this->productService->update($data, $id);
+
+        return redirect('admin/product/' . $id);
     }
 
     /**
@@ -100,6 +107,16 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $productImages = $this->productService->find($id)->productImages->path;
+        foreach ($productImages as $image) {
+            if($image != ''){
+                unlink('front/img/products/'. $image);
+            }
+        }
+        ProductImage::where('product_id', $id)->delete();
+        $this->productService->delete($id);
+
+        return redirect('admin/product');
     }
 }

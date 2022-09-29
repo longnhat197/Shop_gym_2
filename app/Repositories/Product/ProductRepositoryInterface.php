@@ -12,6 +12,7 @@ interface ProductRepositoryInterface extends RepositoryInterface{
     public function getPriceMin();
     public function getPriceMax();
 
+
 }
 
 ?>
