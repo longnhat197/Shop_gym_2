@@ -117,7 +117,7 @@ class CheckOutController extends Controller
 
         Mail::send('front.checkout.email',compact('order','total','subtotal','carts'),
         function($message) use ($email_to){
-            $message->from('longnhat515@gmail.com','TienBui');
+            $message->from('abcxyz@gmail.com','abc');
             $message->to($email_to,$email_to);
             $message->subject('Order Notification');
         });
