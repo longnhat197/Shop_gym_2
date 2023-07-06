@@ -25,7 +25,7 @@ class CartController extends Controller
                 'name' => $product->name,
                 'price' => $product->discount ?? $product->price,
                 'qty' => 1,
-                'weight' => $product->weight,
+                'weight' => $product->weight ?? 0,
                 'options' => [
                     'images' => $product->productImages,
                 ],
